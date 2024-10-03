@@ -1,0 +1,48 @@
+<header
+	class="flex items-center justify-between py-4 px-6 bg-white shadow-md">
+	<!-- Left: Navigation Links -->
+	<nav class="flex items-center space-x-6">
+		<a href="{{ path('app_home') }}" class="text-gray-600 hover:text-gray-900">Home</a>
+		<a href="{{ path('app_dashboard') }}" class="text-gray-600 hover:text-gray-900">Dashboard</a>
+
+		<!-- Dropdown for Products -->
+		<div class="relative group">
+			<button class="text-gray-600 hover:text-gray-900 flex items-center">
+				Generate
+				<svg class="ml-1 w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M10 12l-6-6h12l-6 6z"/></svg>
+			</button>
+			<div class="absolute hidden group-hover:block bg-white border rounded shadow-lg mt-2 w-40">
+				<a href="{{ path('app_cover_letter_generate') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Generate Cover Letter</a>
+				<a href="{{ path('app_linked_in_message_generate') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Generate LinkedIn Post</a>
+			</div>
+		</div>
+
+		<!-- Dropdown for Features -->
+		<div class="relative group">
+			<button class="text-gray-600 hover:text-gray-900 flex items-center">
+				Track my Job Offers
+				<svg class="ml-1 w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M10 12l-6-6h12l-6 6z"/></svg>
+			</button>
+			<div class="absolute hidden group-hover:block bg-white border rounded shadow-lg mt-2 w-40">
+				<a href="{{ path('app_job_offer') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Job Offers</a>
+				<a href="{{ path('app_kanban') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Kanban Board</a>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Right: Logo and Buttons -->
+	<div
+		class="flex items-center space-x-4">
+		<!-- Logo -->
+		<div class="flex items-center">
+			<svg class="w-6 h-6 text-purple-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path d="M12 3v18m9-9H3"/></svg>
+			<span class="ml-2 text-xl font-bold text-gray-800">ProfilAuTop</span>
+		</div>
+
+		<!-- Login and Signup Buttons -->
+		<div class="flex items-center space-x-2">
+			<a href="{{ path('app_login') }}" class="text-gray-600 hover:text-gray-900 px-4 py-2">Login</a>
+			<a href="{{ path('app_register') }}" class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700">Sign up</a>
+		</div>
+	</div>
+</header>
