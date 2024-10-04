@@ -249,4 +249,11 @@ class JobOffer
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        // Retournez une représentation textuelle de l'offre d'emploi
+        // Par exemple :
+        return $this->getTitle() . ' - ' . $this->getCompany();
+    }
 }

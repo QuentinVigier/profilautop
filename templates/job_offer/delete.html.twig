@@ -1,7 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello JobOfferController!{% endblock %}
+{% block title %}ProfilAuTop - Delete Job Offer{% endblock %}
 
 {% block body %}
-DELETE JOBS
+<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div class="absolute inset-0 bg-gradient-to-r from-red-400 to-red-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+        <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+            <div class="max-w-md mx-auto">
+                <h1 class="text-2xl font-semibold text-center mb-6">Confirm Delete</h1>
+                <p class="text-gray-600 text-center mb-8">Are you sure you want to delete this job offer?</p>
+                <form method="post" class="space-y-6">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ job_offer.id) }}">
+                    <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                        <button type="submit" class="w-full sm:w-auto px-4 py-2 text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors duration-300">
+                            Confirm Delete
+                        </button>
+                        <a href="{{ path('app_job_offer') }}" class="w-full sm:w-auto px-4 py-2 text-center text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors duration-300">
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

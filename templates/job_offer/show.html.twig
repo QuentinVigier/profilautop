@@ -3,5 +3,76 @@
 {% block title %}Hello JobOfferController!{% endblock %}
 
 {% block body %}
-SHOW JOBS
+<div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-20">
+    <div class="px-6 py-4">
+        <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ jobOffer.title }}</h2>
+        <p class="text-gray-600 text-lg mb-4">{{ jobOffer.company }}</p>
+        
+        <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+                <p class="text-sm font-semibold text-gray-600">Location</p>
+                <p class="text-gray-800">{{ jobOffer.location ?? 'Not specified' }}</p>
+            </div>
+            <div>
+                <p class="text-sm font-semibold text-gray-600">Salary</p>
+                <p class="text-gray-800">{{ jobOffer.salary ?? 'Not specified' }}</p>
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <p class="text-sm font-semibold text-gray-600">Application Date</p>
+            <p class="text-gray-800">{{ jobOffer.applicationDate|date('Y-m-d') }}</p>
+        </div>
+        
+        <div class="mb-4">
+            <p class="text-sm font-semibold text-gray-600">Status</p>
+            <span class="px-2 py-1 text-sm font-semibold text-white bg-blue-500 rounded-full">{{ jobOffer.status }}</span>
+        </div>
+        
+        <div class="mb-4">
+            <p class="text-sm font-semibold text-gray-600">Contact Person</p>
+            <p class="text-gray-800">{{ jobOffer.contactPerson ?? 'Not specified' }}</p>
+        </div>
+        
+        <div class="mb-4">
+            <p class="text-sm font-semibold text-gray-600">Contact Email</p>
+            <p class="text-gray-800">{{ jobOffer.contactEmail ?? 'Not specified' }}</p>
+        </div>
+        
+        {% if jobOffer.link %}
+        <div class="mb-4">
+            <a href="{% if 'http' in jobOffer.link %}{{ jobOffer.link }}{% else %}https://{{ jobOffer.link }}{% endif %}" target="_blank" class="text-blue-500 hover:underline">View Job Listing</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="px-6 py-4 bg-gray-100">
+            <div>
+                <p class="text-gray-800 mb-2">LinkedIn Messages: {{ jobOffer.linkedInMessages|length }}</p>
+                {% if jobOffer.linkedInMessages|length > 0 %}
+                    <a href="{{ path('app_linked_in_message_show', {'id': jobOffer.linkedInMessages[0].id}) }}" class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">
+                        View LinkedIn Messages
+                    </a>
+                {% else %}
+                    <a href="{{ path('app_linked_in_message_generate', {'jobOfferId': jobOffer.id}) }}" class="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-300">
+                        Create LinkedIn Message
+                    </a>
+                {% endif %}
+            </div>
+            
+            <div>
+                <p class="text-gray-800 mb-2">Cover Letters: {{ jobOffer.coverLetters|length }}</p>
+                {% if jobOffer.coverLetters|length > 0 %}
+                    <a href="{{ path('app_cover_letter_show', {'id': jobOffer.coverLetters[0].id}) }}" class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">
+                        View Cover Letters
+                    </a>
+                {% else %}
+                    <a href="{{ path('app_cover_letter_generate')}}" class="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-300">
+                        Create Cover Letter
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
